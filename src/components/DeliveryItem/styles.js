@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 export const ListItem = styled.li`
   background: #fff;
-  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.2);
-  border-radius: 2px;
+  box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.8);
+  border-radius: 3px 3px 0px 0px;
   padding: 10px;
   display: flex;
   flex-direction: column;

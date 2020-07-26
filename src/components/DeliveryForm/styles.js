@@ -1,20 +1,29 @@
 import styled from 'styled-components';
 import { Breakpoints } from '../Typograph';
 
-export const ButtonWrapper = styled.div`
-  /* height: 15px;
-  background-color: blue;
+export const ButtonSubmit = styled.button.attrs({
+  type: 'submit',
+  value: 'Submit',
+})`
+  width: 100%;
+  border: 0;
+  border-radius: 3px;
+  margin-top: 30px;
+  background: #58b4ae;
+  padding: 15px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  transition: opacity 0.3s;
+  text-align: center;
 
-  @media all and (min-width: ${Breakpoints.md}) {
-    height: 40px;
-    background-color: green;
+  :hover {
+    opacity: 0.8;
   }
-
-  @media all and (min-width: ${Breakpoints.lg}) {
-    height: 50px;
-    background-color: yellow;
-  } */
 `;
+
+export const InputBlock = styled.div``;
 
 export const Container = styled.div`
   .label-title {
@@ -58,22 +67,5 @@ export const Container = styled.div`
     color: #666;
     border: 0;
     border-bottom: 1px solid #eee;
-  }
-
-  form button[type='submit'] {
-    width: 100%;
-    border: 0;
-    margin-top: 30px;
-    background: #12cad6;
-    padding: 15px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    color: #fff;
-    cursor: pointer;
-    transition: opacity 0.3s;
-  }
-
-  form button[type='submit']:hover {
-    opacity: 0.8;
   }
 `;

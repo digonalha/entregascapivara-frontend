@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-// import "./styles.css";
-import { ButtonWrapper, Container } from './styles';
+import { ButtonSubmit, Container } from './styles';
 import api from '../../services/api';
 
-function DeliveryForm({ onSubmit }) {
+function DeliveryForm() {
   const [nomeCliente, setNomeCliente] = useState('');
   const [dataEntrega, setDataEntrega] = useState('');
   const [latIni, setLatIni] = useState('');
@@ -11,28 +10,16 @@ function DeliveryForm({ onSubmit }) {
   const [latEnd, setLatEnd] = useState('');
   const [lngEnd, setLngEnd] = useState('');
 
-  useEffect(() => clearForm(), []);
-
   const clearForm = () => {
     setNomeCliente('');
     setDataEntrega(new Date().toISOString().slice(0, 10)); // TO-DO: criar método no util
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const { latitude, longitude } = position.coords;
-        // srry
-        setLatIni(latitude);
-        setLngIni(longitude);
-        setLatEnd(latitude);
-        setLngEnd(longitude);
-      },
-      (err) => {
-        console.log(err);
-      },
-      {
-        timeout: 30000,
-      }
-    );
+    setLatIni('');
+    setLngIni('');
+    setLatEnd('');
+    setLngEnd('');
   };
+
+  useEffect(() => clearForm(), []);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -40,7 +27,7 @@ function DeliveryForm({ onSubmit }) {
       nome_cliente: nomeCliente,
       data_entrega: dataEntrega,
       ponto_partida: `${latIni}, ${lngIni}`,
-      ponto_destino: `${latEnd}, ${lngIni}`,
+      ponto_destino: `${latEnd}, ${lngEnd}`,
     });
 
     clearForm();
@@ -52,7 +39,6 @@ function DeliveryForm({ onSubmit }) {
         <div className="input-block">
           <label>Cliente</label>
           <input
-            name="nomeCliente"
             id="nomeCliente"
             required
             value={nomeCliente}
@@ -63,7 +49,6 @@ function DeliveryForm({ onSubmit }) {
           <label>Data de entrega</label>
           <input
             type="date"
-            name="dataEntrega"
             id="dataEntrega"
             required
             value={dataEntrega}
@@ -76,7 +61,6 @@ function DeliveryForm({ onSubmit }) {
           <div className="input-block">
             <label>Latitude</label>
             <input
-              name="latIni"
               type="number"
               id="latIni"
               required
@@ -87,7 +71,6 @@ function DeliveryForm({ onSubmit }) {
           <div className="input-block">
             <label>Longitude</label>
             <input
-              name="lngIni"
               type="number"
               id="lngIni"
               required
@@ -101,7 +84,6 @@ function DeliveryForm({ onSubmit }) {
           <div className="input-block">
             <label>Latitude</label>
             <input
-              name="latEnd"
               type="number"
               id="latEnd"
               required
@@ -112,7 +94,6 @@ function DeliveryForm({ onSubmit }) {
           <div className="input-block">
             <label>Longitude</label>
             <input
-              name="lngEnd"
               type="number"
               id="lngEnd"
               required
@@ -121,9 +102,7 @@ function DeliveryForm({ onSubmit }) {
             />
           </div>
         </div>
-        <ButtonWrapper>
-          <button type="submit">Salvar</button>
-        </ButtonWrapper>
+        <ButtonSubmit>Salvar</ButtonSubmit>
       </form>
     </Container>
   );

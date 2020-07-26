@@ -1,11 +1,11 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import MapContainer from './pages/MapContainer';
+import Main from './pages/Main';
 
 export default function Routes() {
   return (
     <Switch>
-      <Route path="/" component={MapContainer} />
+      <Route path="/" component={Main} />
     </Switch>
   );
 }
