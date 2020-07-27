@@ -9,8 +9,6 @@
     "@types/googlemaps": "^3.39.11",
     "axios": "^0.19.2",
     "cors": "^2.8.5",
-    "google-maps-react": "^2.0.6",
-    "polished": "^3.6.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-google-maps": "^9.4.5",

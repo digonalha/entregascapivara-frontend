@@ -3,6 +3,7 @@ import {
   withGoogleMap,
   GoogleMap,
   DirectionsRenderer,
+  Marker,
 } from 'react-google-maps';
 import { MapWrapper } from './styles';
 
@@ -62,11 +63,22 @@ export const Map = (props) => {
     if (props.delivery) createRoute(props.delivery);
   }, []);
 
+  const onClick = (event) => {
+    console.log(event.latLng);
+    return (
+      <Marker
+        position={{ lat: event.latLng.lat(), lng: event.latLng.lng() }}
+        label="S"
+      />
+    );
+  };
+
   const MyMap = withGoogleMap(() => (
     <GoogleMap
       defaultCenter={{ lat: position.lat, lng: position.long }}
       defaultZoom={16}
       options={mapOptions}
+      onClick={(e) => onClick(e)}
     >
       {directions && <DirectionsRenderer directions={directions} />}
     </GoogleMap>

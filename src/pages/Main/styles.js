@@ -6,7 +6,7 @@ export const Sidebar = styled.aside`
   z-index: 5;
   width: 350px;
   background: #fff;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.3);
   border-radius: 2px;
   padding: 30px 20px;
   height: 100vh;
@@ -64,7 +64,7 @@ export const RouteButton = styled.button`
   border: 0;
   box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.8);
   border-radius: 0px 0px 0px 3px;
-  background: #58b4ae;
+  background: #84a9ac;
 
   font-size: 15px;
   font-weight: bold;
@@ -85,7 +85,7 @@ export const DeleteButton = styled.button`
   border: 0;
   box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.8);
   border-radius: 0px 0px 3px 0px;
-  background: #d63447;
+  background: #e8505b;
 
   font-size: 15px;
   font-weight: bold;

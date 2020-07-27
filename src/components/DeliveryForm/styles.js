@@ -9,7 +9,7 @@ export const ButtonSubmit = styled.button.attrs({
   border: 0;
   border-radius: 3px;
   margin-top: 30px;
-  background: #58b4ae;
+  background: #84a9ac;
   padding: 15px 20px;
   font-size: 16px;
   font-weight: bold;
