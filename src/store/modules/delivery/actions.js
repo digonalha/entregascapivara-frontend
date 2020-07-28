@@ -18,6 +18,13 @@ export function storeDeliveries(deliveries) {
   };
 }
 
+export function selectRoute(selected) {
+  return {
+    type: '@delivery/SELECT_ROUTE',
+    selected,
+  };
+}
+
 export function removePending(id) {
   return {
     type: '@delivery/REMOVE_PENDING',

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import {
   withGoogleMap,
   GoogleMap,
@@ -72,6 +73,8 @@ export const Map = (props) => {
       />
     );
   };
+
+  const delivery = useSelector((state) => state.delivery.selected) || {};
 
   const MyMap = withGoogleMap(() => (
     <GoogleMap

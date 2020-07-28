@@ -2,6 +2,7 @@ import produce from 'immer';
 
 const initialState = {
   deliveries: [],
+  selected: {},
 };
 
 export default function delivery(state = initialState, action) {
@@ -13,6 +14,10 @@ export default function delivery(state = initialState, action) {
     case '@delivery/STORE_DELIVERIES':
       return produce(state, (draft) => {
         draft.deliveries = action.deliveries;
+      });
+    case '@delivery/SELECT_ROUTE':
+      return produce(state, (draft) => {
+        draft.selected = action.selected;
       });
     case '@delivery/REMOVE_SUCCESS':
       return produce(state, (draft) => {
