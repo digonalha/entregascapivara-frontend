@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { withScriptjs } from 'react-google-maps';
 import { MdDelete } from 'react-icons/md';
 import DeliveryForm from '../../components/DeliveryForm';
@@ -15,9 +16,12 @@ import {
   ButtonsRow,
 } from './styles';
 
+import * as DeliveryActions from '../../store/modules/delivery/actions';
+
 export default function Main() {
   const [list, setList] = useState([]);
   const [delivery, setDelivery] = useState(null);
+  const dispatch = useDispatch();
 
   useEffect(async () => {
     const response = await api.get('/delivery');
@@ -27,10 +31,10 @@ export default function Main() {
   const MapLoader = withScriptjs(Map);
 
   const removeDelivery = async (del) => {
-    const response = await api.delete(`/delivery/${del.id}`);
-    if (response) setList(list.filter((item) => item.id !== del.id));
+    await dispatch(DeliveryActions.removePending(del.id));
   };
 
+  const deliveries = useSelector((state) => state.delivery.deliveries) || [];
   return (
     <>
       <MapWrapper>
@@ -41,7 +45,7 @@ export default function Main() {
             <strong className="Footer">minhas entregas</strong>
           </FormWrapper>
           <ListWrapper>
-            {list.map((del) => (
+            {deliveries.map((del) => (
               <>
                 <DeliveryItem key={del.id} delivery={del} />
                 <ButtonsRow>
@@ -56,7 +60,6 @@ export default function Main() {
             ))}
           </ListWrapper>
         </Sidebar>
-
         <MapLoader
           googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_API_KEY}`}
           loadingElement={<div style={{ height: `100vh`, width: `100vh` }} />}

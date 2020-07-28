@@ -4,8 +4,8 @@ export const Sidebar = styled.aside`
   position: relative;
   flex-direction: column;
   z-index: 5;
-  width: 350px;
-  background: #fff;
+  width: 300px;
+  background: #ebecf1;
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.3);
   border-radius: 2px;
   padding: 30px 20px;
@@ -55,6 +55,7 @@ export const ListWrapper = styled.div`
 export const ButtonsRow = styled.div`
   display: flex;
   max-height: 30px;
+  margin-bottom: 20px;
 `;
 
 export const RouteButton = styled.button`
@@ -64,7 +65,7 @@ export const RouteButton = styled.button`
   border: 0;
   box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.8);
   border-radius: 0px 0px 0px 3px;
-  background: #84a9ac;
+  background: #206a5d;
 
   font-size: 15px;
   font-weight: bold;

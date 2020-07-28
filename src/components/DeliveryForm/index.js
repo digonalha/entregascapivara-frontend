@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { ButtonSubmit, Container } from './styles';
+import * as DeliveryActions from '../../store/modules/delivery/actions';
 import api from '../../services/api';
 
 function DeliveryForm() {
@@ -9,6 +11,8 @@ function DeliveryForm() {
   const [lngIni, setLngIni] = useState('');
   const [latEnd, setLatEnd] = useState('');
   const [lngEnd, setLngEnd] = useState('');
+
+  const dispatch = useDispatch();
 
   const clearForm = () => {
     setNomeCliente('');
@@ -23,12 +27,15 @@ function DeliveryForm() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    await api.post('/delivery', {
-      nome_cliente: nomeCliente,
-      data_entrega: dataEntrega,
-      ponto_partida: `${latIni}, ${lngIni}`,
-      ponto_destino: `${latEnd}, ${lngEnd}`,
-    });
+
+    await dispatch(
+      DeliveryActions.addPending({
+        nome_cliente: nomeCliente,
+        data_entrega: dataEntrega,
+        ponto_partida: `${latIni}, ${lngIni}`,
+        ponto_destino: `${latEnd}, ${lngEnd}`,
+      })
+    );
 
     clearForm();
   }
