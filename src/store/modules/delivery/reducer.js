@@ -10,6 +10,10 @@ export default function delivery(state = initialState, action) {
       return produce(state, (draft) => {
         draft.deliveries.push(action.delivery);
       });
+    case '@delivery/STORE_DELIVERIES':
+      return produce(state, (draft) => {
+        draft.deliveries = action.deliveries;
+      });
     case '@delivery/REMOVE_SUCCESS':
       return produce(state, (draft) => {
         const delIndex = draft.deliveries.findIndex((p) => p.id === action.id);

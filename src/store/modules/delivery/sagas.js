@@ -10,15 +10,15 @@ function* addPending({ delivery }) {
   }
 }
 
-function* removePending({ id }) {
-  const response = yield call(api.delete, `/delivery/${id}`);
+function* removePending(payload) {
+  const response = yield call(api.delete, `/delivery/${payload.id}`);
 
   if (response) {
-    yield put(removeSuccess(id));
+    yield put(removeSuccess(payload.id));
   }
 }
 
-export default all(
-  [takeLatest('@delivery/ADD_PENDING', addPending)],
-  [takeLatest('@delivery/REMOVE_PENDING', removePending)]
-);
+export default all([
+  takeLatest('@delivery/ADD_PENDING', addPending),
+  takeLatest('@delivery/REMOVE_PENDING', removePending),
+]);

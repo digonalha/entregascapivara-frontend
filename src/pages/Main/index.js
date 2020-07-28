@@ -19,22 +19,22 @@ import {
 import * as DeliveryActions from '../../store/modules/delivery/actions';
 
 export default function Main() {
-  const [list, setList] = useState([]);
   const [delivery, setDelivery] = useState(null);
   const dispatch = useDispatch();
 
   useEffect(async () => {
     const response = await api.get('/delivery');
-    setList(response.data);
+    console.log(response.data);
+    await dispatch(DeliveryActions.storeDeliveries(response.data));
   }, []);
 
   const MapLoader = withScriptjs(Map);
 
-  const removeDelivery = async (del) => {
+  async function removeDelivery(del) {
     await dispatch(DeliveryActions.removePending(del.id));
-  };
+  }
 
-  const deliveries = useSelector((state) => state.delivery.deliveries) || [];
+  const deliveries = useSelector((state) => state.delivery.deliveries);
   return (
     <>
       <MapWrapper>

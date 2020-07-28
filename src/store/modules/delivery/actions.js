@@ -11,6 +11,13 @@ export function addSuccess(delivery) {
   };
 }
 
+export function storeDeliveries(deliveries) {
+  return {
+    type: '@delivery/STORE_DELIVERIES',
+    deliveries,
+  };
+}
+
 export function removePending(id) {
   return {
     type: '@delivery/REMOVE_PENDING',
