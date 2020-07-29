@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Breakpoints } from '../Typograph';
+// import { Breakpoints } from '../Typograph';
 
 export const ButtonSubmit = styled.button.attrs({
   type: 'submit',
@@ -10,7 +10,7 @@ export const ButtonSubmit = styled.button.attrs({
   border-radius: 3px;
   margin-top: 30px;
   background: #1f4068;
-  padding: 15px 20px;
+  padding: 10px 20px;
   font-size: 16px;
   font-weight: bold;
   color: #fff;
@@ -23,52 +23,36 @@ export const ButtonSubmit = styled.button.attrs({
   }
 `;
 
-export const InputBlock = styled.div``;
+export const InputGroup = styled.div`
+  margin-top: 20px;
+  display: flex;
+  gap: 5px;
+  margin-top: 0px;
+`;
 
-export const Container = styled.div`
-  .label-title {
+export const InputBlock = styled.div`
+  margin-top: 20px;
+
+  span {
     color: #acacac;
-    font-size: 14px;
-    font-weight: bold;
-    display: flex;
-    margin-top: 10px;
-    padding: 0px;
-  }
-
-  form {
-    margin-top: 20px;
-  }
-
-  form .input-block + .input-block {
-    margin-top: 20px;
-  }
-
-  form .input-group {
-    margin-top: 20px;
-    display: grid;
-    gap: 20px;
-    grid-template-columns: 1fr 1fr;
-  }
-
-  form .input-group .input-block {
-    margin-top: 0px;
-  }
-
-  form .input-block label {
-    color: #333;
-    margin: 3px;
     font-size: 14px;
     font-weight: bold;
     display: block;
   }
 
-  form .input-block input {
-    padding: 15px;
+  input {
+    background: #eee;
     width: 100%;
     height: 32px;
     font-size: 14px;
     color: #666;
-    border: 1px solid #3333;
-    border-radius: 6px;
+    border: 0;
+    border-bottom: 1px solid #ddd;
+  }
+`;
+
+export const Container = styled.form`
+  svg {
+    cursor: pointer;
   }
 `;

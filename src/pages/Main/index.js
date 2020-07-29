@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { withScriptjs } from 'react-google-maps';
 import DeliveryList from '../../components/DeliveryList';
 import DeliveryForm from '../../components/DeliveryForm';
@@ -24,9 +24,9 @@ export default function Main() {
       <MapWrapper>
         <Sidebar>
           <FormWrapper>
-            <strong className="Title">nova entrega</strong>
+            <h1>nova entrega</h1>
             <DeliveryForm />
-            <strong className="Footer">minhas entregas</strong>
+            <h1>minhas entregas</h1>
           </FormWrapper>
           <DeliveryList />
         </Sidebar>

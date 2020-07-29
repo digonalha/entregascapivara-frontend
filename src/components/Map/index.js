@@ -8,28 +8,21 @@ import {
 } from 'react-google-maps';
 import { MapWrapper } from './styles';
 
-export const Map = (props) => {
+export default function Map() {
   const [position, setPosition] = useState({});
   const [directions, setDirections] = useState(null);
-
-  const center = async () => {
-    navigator.geolocation.getCurrentPosition((pos) => {
-      setPosition({
-        lat: pos.coords.latitude,
-        long: pos.coords.longitude,
-      });
-    });
-  };
 
   const mapOptions = {
     disableDefaultUI: true,
   };
 
-  const createRoute = (delivery) => {
+  const selected = useSelector((state) => state.delivery.selected);
+
+  const createRoute = (selDelivery) => {
     const { google } = window;
 
-    const latlngIni = delivery.ponto_partida.split(/, ?/);
-    const latlngEnd = delivery.ponto_destino.split(/, ?/);
+    const latlngIni = selDelivery.ponto_partida.split(/, ?/);
+    const latlngEnd = selDelivery.ponto_destino.split(/, ?/);
 
     const waypoints = [
       {
@@ -60,12 +53,19 @@ export const Map = (props) => {
   };
 
   useEffect(() => {
-    center();
-    if (props.delivery) createRoute(props.delivery);
+    if (selected.id > 0) createRoute(selected);
+  }, [selected]);
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition((pos) => {
+      setPosition({
+        lat: pos.coords.latitude,
+        long: pos.coords.longitude,
+      });
+    });
   }, []);
 
   const onClick = (event) => {
-    console.log(event.latLng);
     return (
       <Marker
         position={{ lat: event.latLng.lat(), lng: event.latLng.lng() }}
@@ -73,8 +73,6 @@ export const Map = (props) => {
       />
     );
   };
-
-  const delivery = useSelector((state) => state.delivery.selected) || {};
 
   const MyMap = withGoogleMap(() => (
     <GoogleMap
@@ -90,6 +88,4 @@ export const Map = (props) => {
   return (
     <MyMap containerElement={<MapWrapper />} mapElement={<MapWrapper />} />
   );
-};
-
-export default Map;
+}

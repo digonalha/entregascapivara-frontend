@@ -5,17 +5,16 @@ export const Sidebar = styled.aside`
   flex-direction: column;
   z-index: 5;
   width: 300px;
-  background: #ebecf1;
+  background: #eee;
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.3);
   border-radius: 2px;
-  padding: 30px 20px;
+  padding: 0px 20px;
   height: 100vh;
   float: left;
 
-  strong {
-    text-align: center;
-    display: flex;
-    color: #333;
+  h1 {
+    margin-top: 20px;
+    font-size: 20px;
   }
 `;
 
@@ -26,14 +25,7 @@ export const MapWrapper = styled.div`
 
 export const FormWrapper = styled.div`
   overflow: auto;
-  height: 440px;
+  height: 390px;
   border-bottom: 2px solid #eee;
-
-  strong {
-    font-size: 20px;
-  }
-
-  .Footer {
-    margin-top: 15px;
-  }
+  margin-bottom: 10px;
 `;

@@ -24,7 +24,7 @@ export const ListItem = styled.li`
 `;
 
 export const ListWrapper = styled.ul`
-  height: calc(100vh - 470px);
+  height: calc(100vh - 420px);
   overflow: auto;
   -ms-overflow-style: none;
 
@@ -73,12 +73,11 @@ export const DeleteButton = styled.button`
   border-radius: 0px 0px 3px 0px;
   background: #e8505b;
 
-  font-size: 15px;
-  font-weight: bold;
   color: #fff;
   cursor: pointer;
   transition: opacity 0.3s;
   text-align: center;
+  font-size: 12px;
 
   :hover {
     opacity: 0.8;

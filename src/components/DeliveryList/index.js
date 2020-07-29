@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { MdDelete } from 'react-icons/md';
+import React from 'react';
+import { FaTrash } from 'react-icons/fa';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   ListItem,
@@ -11,15 +11,14 @@ import {
 import * as DeliveryActions from '../../store/modules/delivery/actions';
 
 function DeliveryList() {
-  const [_, setDelivery] = useState();
   const dispatch = useDispatch();
 
-  async function removeDelivery(del) {
-    await dispatch(DeliveryActions.removePending(del.id));
+  async function removeDelivery(delivery) {
+    await dispatch(DeliveryActions.removePending(delivery.id));
   }
 
-  async function generateRoute(del) {
-    await dispatch(DeliveryActions.selectRoute(del));
+  async function generateRoute(delivery) {
+    await dispatch(DeliveryActions.selectRoute(delivery));
   }
 
   const deliveries = useSelector((state) => state.delivery.deliveries);
@@ -45,7 +44,7 @@ function DeliveryList() {
                   Gerar rota
                 </RouteButton>
                 <DeleteButton onClick={() => removeDelivery(del)}>
-                  <MdDelete />
+                  <FaTrash />
                 </DeleteButton>
               </ButtonsRow>
             </>
