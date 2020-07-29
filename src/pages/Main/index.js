@@ -13,8 +13,12 @@ export default function Main() {
   const dispatch = useDispatch();
 
   useEffect(async () => {
-    const response = await api.get('/delivery');
-    await dispatch(DeliveryActions.storeDeliveries(response.data));
+    async function fetchData() {
+      const response = await api.get('/delivery');
+      await dispatch(DeliveryActions.storeDeliveries(response.data));
+    }
+
+    fetchData();
   }, []);
 
   const MapLoader = withScriptjs(Map);

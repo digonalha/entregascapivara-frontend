@@ -22,9 +22,9 @@ function DeliveryForm() {
 
   useEffect(() => clearForm(), []);
 
-  const getLatLongDeparture = () => {
-    const geocoder = new google.maps.Geocoder();
-    geocoder.geocode({ address: partida }, function (results, status) {
+  const getLatLongDeparture = async () => {
+    const geocoder = new window.google.maps.Geocoder();
+    geocoder.geocode({ address: partida }, (results, status) => {
       if (status === google.maps.GeocoderStatus.OK) {
         const latLng = `${results[0].geometry.location.lat()},${results[0].geometry.location.lng()}`;
         setPartida(latLng);
@@ -32,9 +32,9 @@ function DeliveryForm() {
     });
   };
 
-  const getLatLongDestiny = () => {
-    const geocoder = new google.maps.Geocoder();
-    geocoder.geocode({ address: destino }, function (results, status) {
+  const getLatLongDestiny = async () => {
+    const geocoder = new window.google.maps.Geocoder();
+    geocoder.geocode({ address: destino }, (results, status) => {
       if (status === google.maps.GeocoderStatus.OK) {
         const latLng = `${results[0].geometry.location.lat()},${results[0].geometry.location.lng()}`;
         setDestino(latLng);
