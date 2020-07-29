@@ -26,7 +26,9 @@ function DeliveryForm() {
     const geocoder = new google.maps.Geocoder();
     geocoder.geocode({ address: partida }, (results, status) => {
       if (status === google.maps.GeocoderStatus.OK) {
-        const latLng = `${results[0].geometry.location.lat()},${results[0].geometry.location.lng()}`;
+        const latLng = `${parseFloat(
+          results[0].geometry.location.lat()
+        )},${parseFloat(results[0].geometry.location.lng())}`;
         setPartida(latLng);
       }
     });
@@ -37,7 +39,9 @@ function DeliveryForm() {
     const geocoder = new google.maps.Geocoder();
     geocoder.geocode({ address: destino }, (results, status) => {
       if (status === google.maps.GeocoderStatus.OK) {
-        const latLng = `${results[0].geometry.location.lat()},${results[0].geometry.location.lng()}`;
+        const latLng = `${parseFloat(
+          results[0].geometry.location.lat()
+        )},${parseFloat(results[0].geometry.location.lng())}`;
         setDestino(latLng);
       }
     });
