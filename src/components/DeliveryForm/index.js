@@ -11,7 +11,6 @@ function DeliveryForm() {
   const [destino, setDestino] = useState('');
 
   const dispatch = useDispatch();
-  const { google } = window;
 
   const clearForm = () => {
     setNomeCliente('');
@@ -23,7 +22,8 @@ function DeliveryForm() {
   useEffect(() => clearForm(), []);
 
   const getLatLongDeparture = async () => {
-    const geocoder = new window.google.maps.Geocoder();
+    const { google } = window;
+    const geocoder = new google.maps.Geocoder();
     geocoder.geocode({ address: partida }, (results, status) => {
       if (status === google.maps.GeocoderStatus.OK) {
         const latLng = `${results[0].geometry.location.lat()},${results[0].geometry.location.lng()}`;
@@ -33,7 +33,8 @@ function DeliveryForm() {
   };
 
   const getLatLongDestiny = async () => {
-    const geocoder = new window.google.maps.Geocoder();
+    const { google } = window;
+    const geocoder = new google.maps.Geocoder();
     geocoder.geocode({ address: destino }, (results, status) => {
       if (status === google.maps.GeocoderStatus.OK) {
         const latLng = `${results[0].geometry.location.lat()},${results[0].geometry.location.lng()}`;
