@@ -76,7 +76,9 @@ export default function Map() {
 
   const MyMap = withGoogleMap(() => (
     <GoogleMap
-      defaultCenter={{ lat: position.lat, lng: position.long }}
+      defaultCenter={
+        position ? { lat: position.lat, lng: position.long } : null
+      }
       defaultZoom={16}
       options={mapOptions}
       onClick={(e) => onClick(e)}
