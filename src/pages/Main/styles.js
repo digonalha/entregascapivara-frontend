@@ -1,5 +1,25 @@
 import styled from 'styled-components';
 
+export const Container = styled.div`
+  display: block;
+  flex-direction: column;
+  overflow: auto;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media (max-width: 850px), (max-height: 550px) {
+    display: flex;
+    flex-direction: column-reverse;
+
+    aside {
+      width: 100%;
+      height: 10%;
+    }
+  }
+`;
+
 export const Sidebar = styled.aside`
   position: relative;
   flex-direction: column;
@@ -16,36 +36,16 @@ export const Sidebar = styled.aside`
     margin-top: 20px;
     font-size: 20px;
   }
+
+  @media (max-width: 850px) {
+    position: unset;
+  }
 `;
 
 export const MapWrapper = styled.div`
   @media (max-width: 850px) {
-    width: auto;
     height: 300px;
-  }
-`;
-
-export const Container = styled.div`
-  display: block;
-  flex-direction: column;
-  overflow: auto;
-
-  ::-webkit-scrollbar {
-    display: none;
-  }
-
-  @media (max-width: 850px), (max-height: 550px) {
-    display: flex;
-    flex-direction: column-reverse;
-    input {
-      margin-left: 0;
-      margin-top: 5px;
-    }
-
-    aside {
-      width: 100%;
-      height: 10%;
-    }
+    width: auto;
   }
 `;
 

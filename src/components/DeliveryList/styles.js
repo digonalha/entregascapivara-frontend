@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  margin-right: 10px;
+  margin-right: 0px;
 `;
 
 export const ListItem = styled.li`

@@ -82,6 +82,7 @@ function DeliveryForm() {
             required
             value={partida}
             onChange={(e) => setPartida(e.target.value)}
+            onBlur={getLatLongDeparture}
           />
           <FaSearch onClick={getLatLongDeparture} />
         </InputGroup>
@@ -96,6 +97,7 @@ function DeliveryForm() {
             required
             value={destino}
             onChange={(e) => setDestino(e.target.value)}
+            onBlur={getLatLongDestiny}
           />
           <FaSearch onClick={getLatLongDestiny} />
         </InputGroup>

@@ -75,7 +75,7 @@ export default function Map() {
   };
 
   const containerStyle = {
-    height: `100vh`,
+    height: '100vh',
     width: `auto`,
   };
 
