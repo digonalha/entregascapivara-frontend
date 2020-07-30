@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { withScriptjs } from 'react-google-maps';
 import DeliveryList from '../../components/DeliveryList';
 import DeliveryForm from '../../components/DeliveryForm';
 import Map from '../../components/Map';
@@ -21,8 +20,6 @@ export default function Main() {
     fetchData();
   }, []);
 
-  const MapLoader = withScriptjs(Map);
-
   return (
     <>
       <MapWrapper>
@@ -34,10 +31,7 @@ export default function Main() {
           </FormWrapper>
           <DeliveryList />
         </Sidebar>
-        <MapLoader
-          googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_API_KEY}`}
-          loadingElement={<div style={{ height: `100vh`, width: `100vh` }} />}
-        />
+        <Map />
       </MapWrapper>
     </>
   );

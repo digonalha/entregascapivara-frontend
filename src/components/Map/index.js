@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import {
-  withGoogleMap,
+  LoadScript,
   GoogleMap,
   DirectionsRenderer,
   Marker,
-} from 'react-google-maps';
+} from '@react-google-maps/api';
 import { MapWrapper } from './styles';
 
 export default function Map() {
@@ -74,20 +74,24 @@ export default function Map() {
     );
   };
 
-  const MyMap = withGoogleMap(() => (
-    <GoogleMap
-      defaultCenter={
-        position ? { lat: position.lat, lng: position.long } : null
-      }
-      defaultZoom={16}
-      options={mapOptions}
-      onClick={(e) => onClick(e)}
-    >
-      {directions && <DirectionsRenderer directions={directions} />}
-    </GoogleMap>
-  ));
+  const containerStyle = {
+    height: `100vh`,
+    width: `auto`,
+  };
 
   return (
-    <MyMap containerElement={<MapWrapper />} mapElement={<MapWrapper />} />
+    <MapWrapper>
+      <LoadScript googleMapsApiKey={process.env.REACT_APP_API_KEY}>
+        <GoogleMap
+          mapContainerStyle={containerStyle}
+          center={position ? { lat: position.lat, lng: position.long } : null}
+          zoom={16}
+          options={mapOptions}
+          onClick={(e) => onClick(e)}
+        >
+          {directions && <DirectionsRenderer directions={directions} />}
+        </GoogleMap>
+      </LoadScript>
+    </MapWrapper>
   );
 }
