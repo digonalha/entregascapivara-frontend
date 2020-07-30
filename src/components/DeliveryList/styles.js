@@ -8,8 +8,11 @@ export const ListItem = styled.li`
   display: flex;
   flex-direction: column;
   align-items: left;
-  margin-top: 10px;
   cursor: pointer;
+
+  .li + .li {
+    margin-top: 10px;
+  }
 
   strong {
     font-size: 13px;
@@ -20,20 +23,6 @@ export const ListItem = styled.li`
     font-size: 14px;
     color: #999;
     margin-top: 2px;
-  }
-`;
-
-export const ListWrapper = styled.ul`
-  height: calc(100vh - 420px);
-  overflow: auto;
-  -ms-overflow-style: none;
-
-  scrollbar-width: none;
-  margin: 0px;
-  padding: 5px;
-
-  ::-webkit-scrollbar {
-    display: none;
   }
 `;
 

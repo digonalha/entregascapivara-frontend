@@ -4,7 +4,13 @@ import DeliveryList from '../../components/DeliveryList';
 import DeliveryForm from '../../components/DeliveryForm';
 import Map from '../../components/Map';
 import api from '../../services/api';
-import { Sidebar, FormWrapper, MapWrapper } from './styles';
+import {
+  Sidebar,
+  FormWrapper,
+  MapWrapper,
+  ListWrapper,
+  Container,
+} from './styles';
 
 import * as DeliveryActions from '../../store/modules/delivery/actions';
 
@@ -22,17 +28,21 @@ export default function Main() {
 
   return (
     <>
-      <MapWrapper>
+      <Container>
         <Sidebar>
           <FormWrapper>
             <h1>nova entrega</h1>
             <DeliveryForm />
             <h1>minhas entregas</h1>
           </FormWrapper>
-          <DeliveryList />
+          <ListWrapper>
+            <DeliveryList />
+          </ListWrapper>
         </Sidebar>
-        <Map />
-      </MapWrapper>
+        <MapWrapper>
+          <Map />
+        </MapWrapper>
+      </Container>
     </>
   );
 }

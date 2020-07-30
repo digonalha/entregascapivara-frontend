@@ -56,7 +56,8 @@ function DeliveryForm() {
         data_entrega: dataEntrega,
         ponto_partida: partida,
         ponto_destino: destino,
-      })
+      }),
+      clearForm()
     );
   }
 
@@ -76,6 +77,7 @@ function DeliveryForm() {
           <input
             type="text"
             placeholder="local de partida"
+            name="partida"
             id="partida"
             required
             value={partida}
@@ -89,6 +91,7 @@ function DeliveryForm() {
           <input
             type="text"
             placeholder="local de destino"
+            name="destino"
             id="destino"
             required
             value={destino}

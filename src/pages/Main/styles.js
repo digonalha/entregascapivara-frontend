@@ -19,13 +19,69 @@ export const Sidebar = styled.aside`
 `;
 
 export const MapWrapper = styled.div`
+  @media (max-width: 850px) {
+    height: 70vh;
+  }
+`;
+
+export const Container = styled.div`
   display: block;
-  flex-direction: initial;
+  flex-direction: column;
+  overflow: auto;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media (max-width: 850px), (max-height: 550px) {
+    display: flex;
+    flex-direction: column-reverse;
+    input {
+      margin-left: 0;
+      margin-top: 5px;
+    }
+
+    aside {
+      width: 100%;
+      height: 10%;
+    }
+  }
 `;
 
 export const FormWrapper = styled.div`
-  overflow: auto;
-  height: 390px;
+  overflow: hidden;
+  height: 410px;
   border-bottom: 2px solid #eee;
   margin-bottom: 10px;
+`;
+
+export const ListWrapper = styled.div`
+  overflow: auto;
+  height: calc(100vh - 400px);
+
+  @media (max-width: 850px) {
+    height: auto;
+  }
+
+  ::-webkit-scrollbar {
+    width: 5px;
+    margin-left: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #eee;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+  }
+  ::-webkit-scrollbar-thumb:window-inactive {
+    background: #fff;
+  }
+
+  margin: 0px;
+  padding: 2px;
 `;
