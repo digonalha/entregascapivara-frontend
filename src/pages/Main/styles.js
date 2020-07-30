@@ -20,7 +20,8 @@ export const Sidebar = styled.aside`
 
 export const MapWrapper = styled.div`
   @media (max-width: 850px) {
-    height: 70vh;
+    width: auto;
+    height: 300px;
   }
 `;
 
@@ -57,7 +58,7 @@ export const FormWrapper = styled.div`
 
 export const ListWrapper = styled.div`
   overflow: auto;
-  height: calc(100vh - 400px);
+  height: calc(100vh - 420px);
 
   @media (max-width: 850px) {
     height: auto;

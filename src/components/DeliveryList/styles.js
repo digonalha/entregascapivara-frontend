@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+export const Container = styled.div`
+  margin-right: 10px;
+`;
+
 export const ListItem = styled.li`
   background: #fff;
   box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.8);
@@ -11,7 +15,7 @@ export const ListItem = styled.li`
   cursor: pointer;
 
   .li + .li {
-    margin-top: 10px;
+    margin-top: 5px;
   }
 
   strong {
