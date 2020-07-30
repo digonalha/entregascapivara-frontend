@@ -11,7 +11,7 @@ import * as DeliveryActions from '../../store/modules/delivery/actions';
 export default function Main() {
   const dispatch = useDispatch();
 
-  useEffect(async () => {
+  useEffect(() => {
     async function fetchData() {
       const response = await api.get('/delivery');
       await dispatch(DeliveryActions.storeDeliveries(response.data));
