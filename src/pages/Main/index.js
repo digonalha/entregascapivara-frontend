@@ -4,13 +4,7 @@ import DeliveryList from '../../components/DeliveryList';
 import DeliveryForm from '../../components/DeliveryForm';
 import Map from '../../components/Map';
 import api from '../../services/api';
-import {
-  Sidebar,
-  FormWrapper,
-  MapWrapper,
-  ListWrapper,
-  Container,
-} from './styles';
+import { Sidebar, FormWrapper, ListWrapper, Container } from './styles';
 
 import * as DeliveryActions from '../../store/modules/delivery/actions';
 
@@ -39,9 +33,7 @@ export default function Main() {
             <DeliveryList />
           </ListWrapper>
         </Sidebar>
-        <MapWrapper>
-          <Map />
-        </MapWrapper>
+        <Map />
       </Container>
     </>
   );

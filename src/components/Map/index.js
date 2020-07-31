@@ -65,7 +65,7 @@ export default function Map() {
     });
   }, []);
 
-  const onClick = (event) => {
+  const createMarker = (event) => {
     return (
       <Marker
         position={{ lat: event.latLng.lat(), lng: event.latLng.lng() }}
@@ -75,8 +75,8 @@ export default function Map() {
   };
 
   const containerStyle = {
-    height: '100vh',
-    width: `auto`,
+    height: '100%',
+    width: 'auto',
   };
 
   return (
@@ -87,7 +87,7 @@ export default function Map() {
           center={position ? { lat: position.lat, lng: position.long } : null}
           zoom={16}
           options={mapOptions}
-          onClick={(e) => onClick(e)}
+          onClick={(e) => createMarker(e)}
         >
           {directions && <DirectionsRenderer directions={directions} />}
         </GoogleMap>
