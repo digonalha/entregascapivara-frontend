@@ -41,7 +41,7 @@ export const InputBlock = styled.div`
   }
 
   input {
-    background: #eee;
+    background: #fff;
     width: 100%;
     height: 32px;
     font-size: 14px;

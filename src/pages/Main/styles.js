@@ -21,11 +21,12 @@ export const Container = styled.div`
 `;
 
 export const Sidebar = styled.aside`
-  position: relative;
+  display: flex;
+
   flex-direction: column;
   z-index: 5;
   width: 300px;
-  background: #eee;
+  background: #fff;
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.3);
   border-radius: 2px;
   padding: 0px 20px;
@@ -35,17 +36,6 @@ export const Sidebar = styled.aside`
   h1 {
     margin-top: 20px;
     font-size: 20px;
-  }
-
-  @media (max-width: 850px) {
-    position: unset;
-  }
-`;
-
-export const MapWrapper = styled.div`
-  @media (max-width: 850px) {
-    height: 300px;
-    width: auto;
   }
 `;
 
@@ -59,6 +49,8 @@ export const FormWrapper = styled.div`
 export const ListWrapper = styled.div`
   overflow: auto;
   height: calc(100vh - 420px);
+  margin: 0px;
+  padding: 2px;
 
   @media (max-width: 850px) {
     height: auto;
@@ -82,7 +74,4 @@ export const ListWrapper = styled.div`
   ::-webkit-scrollbar-thumb:window-inactive {
     background: #fff;
   }
-
-  margin: 0px;
-  padding: 2px;
 `;
