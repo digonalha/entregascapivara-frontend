@@ -84,7 +84,7 @@ export default function Map() {
       <LoadScript googleMapsApiKey={process.env.REACT_APP_API_KEY}>
         <GoogleMap
           mapContainerStyle={containerStyle}
-          center={position ? { lat: position.lat, lng: position.long } : null}
+          center={{ lat: position.lat, lng: position.long }}
           zoom={16}
           options={mapOptions}
           onClick={(e) => createMarker(e)}
