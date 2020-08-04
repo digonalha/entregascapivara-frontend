@@ -66,6 +66,12 @@ export default function Map() {
   }, []);
 
   const createMarker = (event) => {
+    navigator.geolocation.getCurrentPosition((pos) => {
+      setPosition({
+        lat: pos.coords.latitude,
+        long: pos.coords.longitude,
+      });
+    });
     return (
       <Marker
         position={{ lat: event.latLng.lat(), lng: event.latLng.lng() }}
