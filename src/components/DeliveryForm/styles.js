@@ -32,6 +32,8 @@ export const InputGroup = styled.div`
 
 export const InputBlock = styled.div`
   margin-top: 20px;
+  border: 0;
+  border-bottom: 1px solid #ddd;
 
   span {
     color: #acacac;
@@ -47,7 +49,6 @@ export const InputBlock = styled.div`
     font-size: 14px;
     color: #666;
     border: 0;
-    border-bottom: 1px solid #ddd;
   }
 `;
 

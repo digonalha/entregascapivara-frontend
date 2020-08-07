@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { FaSearch } from 'react-icons/fa';
+import { FaMapMarkerAlt } from 'react-icons/fa';
 import { ButtonSubmit, Container, InputGroup, InputBlock } from './styles';
 import * as DeliveryActions from '../../store/modules/delivery/actions';
 
@@ -84,7 +84,7 @@ function DeliveryForm() {
             onChange={(e) => setPartida(e.target.value)}
             onBlur={getLatLongDeparture}
           />
-          <FaSearch onClick={getLatLongDeparture} />
+          <FaMapMarkerAlt onClick={getLatLongDeparture} />
         </InputGroup>
       </InputBlock>
       <InputBlock>
@@ -99,7 +99,7 @@ function DeliveryForm() {
             onChange={(e) => setDestino(e.target.value)}
             onBlur={getLatLongDestiny}
           />
-          <FaSearch onClick={getLatLongDestiny} />
+          <FaMapMarkerAlt onClick={getLatLongDestiny} />
         </InputGroup>
       </InputBlock>
       <InputBlock>
