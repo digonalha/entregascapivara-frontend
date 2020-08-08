@@ -62,6 +62,7 @@ export const ListWrapper = styled.div`
   }
   ::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
     -webkit-border-radius: 10px;
     border-radius: 10px;
   }
@@ -70,6 +71,7 @@ export const ListWrapper = styled.div`
     border-radius: 10px;
     background: #eee;
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
   }
   ::-webkit-scrollbar-thumb:window-inactive {
     background: #fff;
