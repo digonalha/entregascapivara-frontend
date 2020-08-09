@@ -18,6 +18,13 @@ export function storeDeliveries(deliveries) {
   };
 }
 
+export function setMarker(position) {
+  return {
+    type: '@delivery/SET_MARKER',
+    position,
+  };
+}
+
 export function selectRoute(selected) {
   return {
     type: '@delivery/SELECT_ROUTE',
