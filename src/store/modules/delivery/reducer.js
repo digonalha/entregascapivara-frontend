@@ -3,7 +3,7 @@ import produce from 'immer';
 const initialState = {
   deliveries: [],
   selected: {},
-  position: {},
+  marker: {},
 };
 
 export default function delivery(state = initialState, action) {
@@ -18,7 +18,7 @@ export default function delivery(state = initialState, action) {
       });
     case '@delivery/SET_MARKER':
       return produce(state, (draft) => {
-        draft.position = action.position;
+        draft.marker = action.marker;
       });
     case '@delivery/SELECT_ROUTE':
       return produce(state, (draft) => {
