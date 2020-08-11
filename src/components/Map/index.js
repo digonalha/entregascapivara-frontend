@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   LoadScript,
   GoogleMap,
@@ -7,16 +7,15 @@ import {
   Marker,
 } from '@react-google-maps/api';
 import { MapWrapper } from './styles';
+import * as DeliveryActions from '../../store/modules/delivery/actions';
 
 export default function Map() {
-  const [position, setPosition] = useState({});
   const [directions, setDirections] = useState(null);
+  const dispatch = useDispatch();
 
   const mapOptions = {
-    disableDefaultUI: true,
+    disableDefaultUI: false,
   };
-
-  const selected = useSelector((state) => state.delivery.selected);
 
   const createRoute = (selDelivery) => {
     const { google } = window;
@@ -52,21 +51,28 @@ export default function Map() {
     );
   };
 
-  useEffect(() => {
-    if (selected.id > 0) createRoute(selected);
-  }, [selected]);
+  const setMarker = (pos) => {
+    dispatch(DeliveryActions.setMarker(pos));
+  };
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((pos) => {
-      setPosition({
+      setMarker({
         lat: pos.coords.latitude,
-        long: pos.coords.longitude,
+        lng: pos.coords.longitude,
       });
     });
   }, []);
 
+  const selected = useSelector((state) => state.delivery.selected);
+  const position = useSelector((state) => state.delivery.marker);
+
+  useEffect(() => {
+    if (selected.id > 0) createRoute(selected);
+  }, [selected]);
+
   const createMarker = (event) =>
-    setPosition({ lat: event.latLng.lat(), lng: event.latLng.lng() });
+    setMarker({ lat: event.latLng.lat(), lng: event.latLng.lng() });
 
   const containerStyle = {
     height: '100%',
@@ -78,16 +84,18 @@ export default function Map() {
       <LoadScript googleMapsApiKey={process.env.REACT_APP_API_KEY}>
         <GoogleMap
           mapContainerStyle={containerStyle}
-          center={{ lat: position.lat, lng: position.long }}
+          center={position}
           zoom={16}
           options={mapOptions}
-          onClick={(e) => createMarker(e)}
+          onClick={(e) =>
+            setMarker({ lat: e.latLng.lat(), lng: e.latLng.lng() })
+          }
         >
           {position && (
             <Marker
               position={position}
               label=""
-              onClick={() => setPosition('')}
+              onClick={() => setMarker('')}
             />
           )}
           {directions && <DirectionsRenderer directions={directions} />}

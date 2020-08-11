@@ -18,10 +18,10 @@ export function storeDeliveries(deliveries) {
   };
 }
 
-export function setMarker(position) {
+export function setMarker(marker) {
   return {
     type: '@delivery/SET_MARKER',
-    position,
+    marker,
   };
 }
 

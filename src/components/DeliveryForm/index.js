@@ -26,23 +26,28 @@ function DeliveryForm() {
     const geocoder = new google.maps.Geocoder();
     geocoder.geocode({ address: partida }, (results, status) => {
       if (status === google.maps.GeocoderStatus.OK) {
-        const latLng = `${parseFloat(
-          results[0].geometry.location.lat()
-        )},${parseFloat(results[0].geometry.location.lng())}`;
+        const lat = parseFloat(results[0].geometry.location.lat());
+        const lng = parseFloat(results[0].geometry.location.lng());
+
+        const latLng = `${lat},${lng}`;
         setPartida(latLng);
+        dispatch(DeliveryActions.setMarker({ lat, lng }));
       }
     });
   };
 
   const getLatLongDestiny = async () => {
     const { google } = window;
+
     const geocoder = new google.maps.Geocoder();
     geocoder.geocode({ address: destino }, (results, status) => {
       if (status === google.maps.GeocoderStatus.OK) {
-        const latLng = `${parseFloat(
-          results[0].geometry.location.lat()
-        )},${parseFloat(results[0].geometry.location.lng())}`;
+        const lat = parseFloat(results[0].geometry.location.lat());
+        const lng = parseFloat(results[0].geometry.location.lng());
+
+        const latLng = `${lat},${lng}`;
         setDestino(latLng);
+        dispatch(DeliveryActions.setMarker({ lat, lng }));
       }
     });
   };
