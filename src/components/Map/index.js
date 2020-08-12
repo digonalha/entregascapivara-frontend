@@ -11,6 +11,7 @@ import * as DeliveryActions from '../../store/modules/delivery/actions';
 
 export default function Map() {
   const [directions, setDirections] = useState(null);
+  const [atualPosition, setAtualPosition] = useState(null);
   const dispatch = useDispatch();
 
   const mapOptions = {
@@ -53,11 +54,12 @@ export default function Map() {
 
   const setMarker = (pos) => {
     dispatch(DeliveryActions.setMarker(pos));
+    setDirections(null);
   };
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((pos) => {
-      setMarker({
+      setAtualPosition({
         lat: pos.coords.latitude,
         lng: pos.coords.longitude,
       });
@@ -71,20 +73,15 @@ export default function Map() {
     if (selected.id > 0) createRoute(selected);
   }, [selected]);
 
-  const createMarker = (event) =>
-    setMarker({ lat: event.latLng.lat(), lng: event.latLng.lng() });
-
-  const containerStyle = {
-    height: '100%',
-    width: 'auto',
-  };
-
   return (
     <MapWrapper>
       <LoadScript googleMapsApiKey={process.env.REACT_APP_API_KEY}>
         <GoogleMap
-          mapContainerStyle={containerStyle}
-          center={position}
+          mapContainerStyle={{
+            height: '100%',
+            width: 'auto',
+          }}
+          center={atualPosition}
           zoom={16}
           options={mapOptions}
           onClick={(e) =>
