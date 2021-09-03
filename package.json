@@ -10,7 +10,7 @@
     "@types/googlemaps": "^3.39.11",
     "axios": "^0.21.1",
     "cors": "^2.8.5",
-    "immer": "^8.0.1",
+    "immer": "^9.0.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-icons": "^3.10.0",
